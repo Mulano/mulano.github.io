@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abel Mulaka · DevOps & AgentOps Engineer</title>
+<meta name="description" content="Abel Gerald Pranay Kumar Mulaka — DevOps/SRE engineer building CI/CD, infrastructure as code, and AI-assisted delivery pipelines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#14213D; --muted:#55627A; --line:#D5DBE5;
+  --pass:#2F8F6B; --run:#C98A1A; --queue:#8A96AB;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1726; --surface:#16213A; --ink:#E6ECF5; --muted:#9AA8C0; --line:#2A3858;
+    --pass:#4FBF95; --run:#E3AE45; --queue:#6E7D99;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1726; --surface:#16213A; --ink:#E6ECF5; --muted:#9AA8C0; --line:#2A3858;
+  --pass:#4FBF95; --run:#E3AE45; --queue:#6E7D99;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--pass);outline-offset:3px;border-radius:2px}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+h1,h2{font-family:"IBM Plex Serif",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+
+/* Hero */
+header{padding:72px 0 40px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-.01em}
+.role{font-size:1.15rem;color:var(--muted);margin:12px 0 28px;max-width:60ch}
+.contact{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.95rem}
+.contact a{color:var(--ink)}
+
+/* Pipeline: the signature element */
+.pipeline{margin:48px 0 8px;overflow-x:auto;padding-bottom:6px}
+.stages{display:flex;min-width:720px;position:relative}
+.stage{flex:1;position:relative;padding-top:30px;padding-right:12px}
+.stage::before{content:"";position:absolute;top:9px;left:0;right:0;height:2px;background:var(--line)}
+.stage:first-child::before{left:9px}
+.stage:last-child::before{right:auto;width:0}
+.dot{position:absolute;top:0;left:0;width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--queue);background:var(--bg)}
+.stage.pass .dot{background:var(--pass);border-color:var(--pass)}
+.stage.pass::before{background:var(--pass)}
+.stage.run .dot{border-color:var(--run);background:var(--bg)}
+.stage.run .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--run);
+  animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.stage.run .dot::after{animation:none}}
+.stage h3{font-size:.98rem;font-weight:600;margin:0 0 2px}
+.stage p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.4}
+.status{font-size:.8rem;font-weight:500;margin-top:6px}
+.pass .status{color:var(--pass)} .run .status{color:var(--run)} .queue .status{color:var(--queue)}
+
+/* Sections */
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-size:1.6rem;margin-bottom:20px}
+.lede{max-width:65ch;margin:0}
+.job{margin-bottom:8px}
+.job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.job-head h3{font-size:1.1rem;margin:0}
+.when{color:var(--muted);font-size:.92rem}
+.org{color:var(--muted);margin:2px 0 10px}
+ul.points{margin:0;padding-left:20px;max-width:68ch}
+ul.points li{margin-bottom:6px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px 32px}
+.skills h3{font-size:1rem;margin:0 0 4px}
+.skills p{margin:0;color:var(--muted);font-size:.95rem}
+
+.project{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--run);
+  padding:20px 22px;margin-bottom:16px;border-radius:6px}
+.project.done{border-left-color:var(--pass)}
+.project h3{font-size:1.05rem;margin:0 0 6px}
+.project p{margin:0;max-width:66ch}
+.project .meta{font-size:.85rem;color:var(--muted);margin-top:8px}
+
+.edu{display:grid;gap:16px}
+.edu div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px}
+.edu strong{font-weight:600}
+
+footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--ink);font:inherit;font-size:.85rem;
+  padding:6px 12px;border-radius:4px;cursor:pointer;margin-top:12px}
+@media (max-width:600px){header{padding-top:48px} body{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Abel Mulaka</h1>
+  <p class="role">DevOps and SRE engineer who builds the path from pull request to production — CI/CD, infrastructure as code, and now delivery systems where AI agents and engineers work side by side.</p>
+  <div class="contact">
+    <a href="mailto:mulakapranay@gmail.com">mulakapranay@gmail.com</a>
+    <a href="https://www.linkedin.com/in/abel-mulaka-27b747166" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Mulano" target="_blank" rel="noopener">GitHub</a>
+    <span>Fremont, CA</span>
+  </div>
+
+  <div class="pipeline" aria-label="Career progression">
+    <div class="stages">
+      <div class="stage pass"><span class="dot"></span><h3>B.Tech</h3><p>Sreenidhi Institute of Science and Technology</p><div class="status">Passed · 2020</div></div>
+      <div class="stage pass"><span class="dot"></span><h3>M.S. Computer Science</h3><p>University of Dayton</p><div class="status">Passed · 2022</div></div>
+      <div class="stage pass"><span class="dot"></span><h3>DevOps engineer</h3><p>WorldLink · Q2 Financial Services</p><div class="status">Shipped to prod</div></div>
+      <div class="stage run"><span class="dot"></span><h3>M.S. Data Science</h3><p>Golden Gate University · 4.0 GPA</p><div class="status">Running</div></div>
+      <div class="stage queue"><span class="dot"></span><h3>AgentOps & AI systems</h3><p>Where I'm headed</p><div class="status">Queued</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <p class="lede">I've spent my career on the unglamorous part of software that decides whether a team ships confidently or nervously: branching models, merge gates, rollbacks, environments, and secrets. I design for the failure case first — blast radius, permissions, and what happens when an automated change is wrong. I'm now applying that same thinking to AI-assisted delivery, where the hard question is which work an agent should own, which needs a human, and where the guardrails go.</p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="job">
+    <div class="job-head"><h3>DevOps Engineer</h3><span class="when">Present</span></div>
+    <p class="org">WorldLink LLC · client: Q2 Financial Services</p>
+    <ul class="points">
+      <li>Build and operate GitLab CI/CD pipelines covering validation, deployment, and rollback for production financial-services systems.</li>
+      <li>Manage AWS infrastructure as code with Terraform across environments.</li>
+      <li>Led the decommissioning of legacy jump boxes, moving access onto a more controlled path without disrupting the teams that depended on them.</li>
+      <li>Handled a data center migration, moving workloads to their new environment while keeping services running.</li>
+      <li>Set up and managed connection servers that control how users and systems reach internal environments.</li>
+      <li>Automate manual release and operations steps with Python to remove toil from the delivery path.</li>
+      <li>Work with development teams through Jira to move changes from request to production in a regulated environment.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><h3>CI/CD and release</h3><p>GitLab CI/CD, GitHub Actions, branching strategy, merge gating, deploy and rollback</p></div>
+    <div><h3>Infrastructure</h3><p>Terraform, AWS, environment strategy, secrets handling, networking and VPN</p></div>
+    <div><h3>Code and automation</h3><p>Python, Bash, API and platform integration</p></div>
+    <div><h3>AI and data</h3><p>AI coding tools and agentic workflows, scikit-learn, pandas, model evaluation and fairness</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project">
+    <h3>Three-lane AI-assisted delivery pipeline</h3>
+    <p>A CI/CD pipeline that routes each change into a fully agentic, human-in-the-loop, or AI-assisted lane, with scoped agent permissions, approval gates, and an audit trail.</p>
+    <div class="meta">In progress</div>
+  </div>
+  <div class="project">
+    <h3>Fairness audit of a predictive model</h3>
+    <p>Auditing an income-prediction classifier for group-level disparities and measuring the accuracy-versus-equity tradeoff of an equalized-odds mitigation. Python, scikit-learn, fairlearn.</p>
+    <div class="meta">In progress</div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu">
+    <div><span><strong>M.S. Data Science</strong> · Golden Gate University</span><span class="when">In progress · GPA 4.0</span></div>
+    <div><span><strong>M.S. Computer Science</strong> · University of Dayton</span><span class="when">2022</span></div>
+    <div><span><strong>B.Tech</strong> · Sreenidhi Institute of Science and Technology</span><span class="when">2020</span></div>
+  </div>
+</section>
+
+<footer>
+  <div>Open to conversations about DevOps, platform engineering, and AgentOps roles. Email is the fastest way to reach me.</div>
+  <button class="theme-btn" id="themeBtn" type="button">Switch theme</button>
+</footer>
+
+</div>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme') ||
+      (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
